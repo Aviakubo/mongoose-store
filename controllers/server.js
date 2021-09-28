@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Index - display all products
 app.get('/products', (req, res) => {
-	Book.find({}, (error, allProducts) => {
+	Product.find({}, (error, allProducts) => {
 		res.render('index.ejs', {
 			products: allProducts,
 		});
@@ -41,8 +41,18 @@ app.get('/products/new', (req, res) => {
 });
 
 // Delete - delete a single item
+app.delete('/products/:id', (req, res) => {
+    products.splice(req.params.id, 1);
+    res.redirect('/products');
+  });
+
 
 // Update - update a single item
+app.put('/products/:id', (req, res) => {
+	products[req.params.id] = req.body;
+    console.log(req.body)
+	res.redirect('/products');
+});
 
 // Create - create a new item
 app.post('/products', (req, res) => {
@@ -51,13 +61,22 @@ app.post('/products', (req, res) => {
     });
 });
 
-// Edit - display form to update a book
+// Edit - display form to update an item
+app.get('/products/:id/edit', (req, res) => {
+	res.render(
+		'edit.ejs',
+		{
+			products: products[req.params.id],
+			index: req.params.id,
+		}
+	);
+});
 
-// Show - display a single book
-app.get('/books/:id', (req, res) => {
-	Book.findById(req.params.id, (err, foundBook) => {
+// Show - display a single item
+app.get('/products/:id', (req, res) => {
+	Product.findById(req.params.id, (err, foundProduct) => {
 		res.render('show.ejs', {
-			book: foundBook,
+			product: foundProduct,
 		});
 	});
 });
