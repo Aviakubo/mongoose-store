@@ -7,15 +7,19 @@
     <title>Mongoose Store</title>
 </head>
 <body>
-
     <h1>Mongoose Store</h1>
 
     <h2><%= items.name %></h2>
 
     <img src=<%= items.img %>>
 
-    <form action="/products/<%=index%>?_method=PUT" method="POST">
-        Name: <input type="text" name="name" value="<%=items.name%>"><br>
+    <p>
+         <ul>
+             <li>Description: <%= items.desscription %></li>
+             <li>Price: <%= items.price %></li>
+             <li>Quantity: <%= items.qty %></li>
+         <ul>
+     </p>
     
 </body>
 </html>

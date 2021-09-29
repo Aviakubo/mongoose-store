@@ -3,7 +3,8 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
-const Product = require('./models/products.js');
+const Product = require('../models/products');
+const methodOverride = require('method-override');
 
 
 // Database Connection
@@ -28,9 +29,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Index - display all products
 app.get('/products', (req, res) => {
-	Product.find({}, (error, allProducts) => {
+	Product.find({}, (error, allItems) => {
 		res.render('index.ejs', {
-			products: allProducts,
+			items: allItems,
 		});
 	});
 });
@@ -42,7 +43,7 @@ app.get('/products/new', (req, res) => {
 
 // Delete - delete a single item
 app.delete('/products/:id', (req, res) => {
-    products.splice(req.params.id, 1);
+    items.splice(req.params.id, 1);
     res.redirect('/products');
   });
 
@@ -56,7 +57,7 @@ app.put('/products/:id', (req, res) => {
 
 // Create - create a new item
 app.post('/products', (req, res) => {
-    Product.create(req.body, (error, createdProduct) => {
+    Product.create(req.body, (error, createdItem) => {
         res.redirect('/products');
     });
 });
@@ -66,7 +67,7 @@ app.get('/products/:id/edit', (req, res) => {
 	res.render(
 		'edit.ejs',
 		{
-			products: products[req.params.id],
+			items: items[req.params.id],
 			index: req.params.id,
 		}
 	);
@@ -74,9 +75,9 @@ app.get('/products/:id/edit', (req, res) => {
 
 // Show - display a single item
 app.get('/products/:id', (req, res) => {
-	Product.findById(req.params.id, (err, foundProduct) => {
+	Product.findById(req.params.id, (err, foundItem) => {
 		res.render('show.ejs', {
-			product: foundProduct,
+			item: foundItem,
 		});
 	});
 });

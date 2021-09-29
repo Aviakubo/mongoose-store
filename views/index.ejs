@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mongoose Store</title>
 </head>
+
 <body>
-    
+
+    <h1>Mongoose Store</h1>
+
+    <nav>
+        <a href=/products/new">Create a New Product</a>
+    </nav>
+
+    <ul>
+        <% for(let i=0; i < items.length; i++) {%>
+            <li>
+                <a href="/products/<%=i%>">
+                    <img src="<%= items[i].img %>">
+                </a>
+                <br>
+                <a href="/products/<%=i; %>/edit"><button>Edit</button></a>
+                <form action="/products/<%=i; %>?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete" />
+                </form>
+            </li>
+
+
+            <% } %>
+    </ul>
 </body>
+
 </html>
