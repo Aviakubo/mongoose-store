@@ -20,9 +20,7 @@
         <% items.forEach(item => { %>
             <li>
                 <a href="/products/<%=item._id; %>"><img src=" <%=item.img; %>"> </a>
-                <form action="/products/<%=items._id%>/buy?_method=PUT" method="POST">
-                    <input type="submit" value="BUY NOW!"/>
-                </form>
+
                 <form action="/products/<%= items.id %>?_method=DELETE" method="POST">
                     <input type="submit" value="DELETE"/>
                 </form>

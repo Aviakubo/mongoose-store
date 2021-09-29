@@ -60,17 +60,6 @@ app.put('/products/:id', (req, res) => {
 	});
 });
 
-// Buy Button
-app.put('/mongooseStore/:id/buy', (req, res) => {
-    Product.findByIdAndUpdate(req.params.id, {
-        new: true,
-    }, (error, updatedProduct) =>	{
-        console.log(req.body);
-        updatedProduct.qty -= 1
-        res.redirect(`/products/${req.params.id}`);
-	});
-});
-
 // Create - create a new item
 app.post("/products", (req, res) => {
     // original res.send to send body
