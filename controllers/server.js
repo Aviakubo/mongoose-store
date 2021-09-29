@@ -73,7 +73,7 @@ app.post("/products", (req, res) => {
 
 // Edit - display form to update an item
 app.get('/products/:id/edit', (req, res) =>  {
-	Product.findById(req.params.id, (error, founditem) => {
+	Product.findById(req.params.id, (err, foundItem) => {
 		res.render('edit.ejs', {
 			item: foundItem
 		});
