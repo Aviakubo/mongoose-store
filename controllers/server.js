@@ -51,13 +51,23 @@ app.delete('/products/:id', (req, res) => {
 	});
 });
 
-
 // Update - update a single item
 app.put('/products/:id', (req, res) => {
 	Product.findByIdAndUpdate(req.params.id, req.body, {
 		new: true
 	}, (error, updatedItem) => {
 		res.redirect(`/products/${req.params.id}`);
+	});
+});
+
+// Buy Button
+app.put('/mongooseStore/:id/buy', (req, res) => {
+    Product.findByIdAndUpdate(req.params.id, {
+        new: true,
+    }, (error, updatedProduct) =>	{
+        console.log(req.body);
+        updatedProduct.qty -= 1
+        res.redirect(`/products/${req.params.id}`);
 	});
 });
 
