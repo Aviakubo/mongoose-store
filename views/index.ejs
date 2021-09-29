@@ -17,20 +17,15 @@
     </nav>
 
     <ul>
-        <% for(let i=0; i < items.length; i++) {%>
+        <% items.forEach(item => { %>
             <li>
-                <a href="/products/<%=i%>">
-                    <img src="<%= items[i].img %>">
-                </a>
-                <br>
-                <a href="/products/<%=i; %>/edit"><button>Edit</button></a>
-                <form action="/products/<%=i; %>?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete" />
+                <a href="/products/<%=item._id; %>"><img src=" <%=item.img; %>"> </a>
+                <form action="/products/<%= items.id %>?_method=DELETE" method="POST">
+                    <input type="submit" value="DELETE"/>
                 </form>
+                <a href="/products/<%=item._id %>/edit">Edit</a>
             </li>
-
-
-            <% } %>
+        <% }) %>
     </ul>
 </body>
 

@@ -12,10 +12,10 @@
 
     <h2><%= items.name %></h2>
 
-    <img src=<%= items.img %>>
+    <img src=<%= item.img %>>
 
     <form action="/products/<%=index%>?_method=PUT" method="POST">
-        Name: <input type="text" name="name" value="<%=items.name%>"><br>
+        Name: <input type="text" name="name" value="<%=item.name%>"><br>
     
 </body>
 </html>
