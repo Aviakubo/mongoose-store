@@ -26,9 +26,10 @@
             <form action="/products/<%=item._id%>?_method=PUT" method="POST">
                 <% if(item.qty != 0) { %>
                 <input class="hidden" type="hidden" name="qty" value="<%= (parseInt(item.qty)-1).toString() %>">
-                <input class ="buy" type="submit" name="" value="Buy Now!"/>
+                <input class ="buy" type="submit" value="Buy Now!"/>
                 <% } else { %>
-                    <input class="oof" type="submit" name="" value="Buy Now!" disabled="true"/>
+                    <p>Out of Stock!</p>
+                    <input class="off" type="submit" value="Buy Now!" disabled="true"/>
                <% } %>
             </form>
             <a href="/products"><button>Back Home</button></a>
