@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/uikit-rtl.css"/>
+    <link rel="stylesheet" href="/uikit-rtl.min.css"/>
+    <link rel="stylesheet" href="/uikit.css"/>
+    <link rel="stylesheet" href="/uikit.min.css"/>
     <title>Mongoose Store</title>
 </head>
 
@@ -21,7 +25,7 @@
             <li>
                 <a href="/products/<%=item._id; %>"><img src=" <%=item.img; %>"> </a>
 
-                <form action="/products/<%= items.id %>?_method=DELETE" method="POST">
+                <form action="/products/<%= item.id %>?_method=DELETE" method="POST">
                     <input type="submit" value="DELETE"/>
                 </form>
                 <a href="/products/<%=item._id %>/edit">Edit</a>
