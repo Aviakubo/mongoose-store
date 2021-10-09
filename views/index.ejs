@@ -15,23 +15,14 @@
 <body>
 
     <h1>Mongoose Store</h1>
-
-    <nav>
-        <a href="/products/new">Add a New Product</a>
-    </nav>
-
-    <ul>
-        <% items.forEach(item => { %>
-            <li>
-                <a href="/products/<%=item._id; %>"><img src=" <%=item.img; %>"> </a>
-
-                <form action="/products/<%= item.id %>?_method=DELETE" method="POST">
-                    <input type="submit" value="DELETE"/>
-                </form>
-                <a href="/products/<%=item._id %>/edit">Edit</a>
-            </li>
-        <% }) %>
-    </ul>
+        <ul>
+			<% store.forEach(store => { %>
+			<li><a id="list" href="/store/<%=store._id; %>"><%=store.name; %></a></li>
+			<% }) %>
+		</ul>
+        <nav>
+            <a id="add" href="/store/new">Add a New Product</a>
+        </nav>
 </body>
 
 </html>

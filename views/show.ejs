@@ -11,29 +11,36 @@
     <title>Mongoose Store</title>
 </head>
 <body>
-    <h1>Mongoose Store</h1>
-
-    <h2><%= item.name %></h2>
-
-    <img src="<%= item.img %>">
-
-    <p>
-         <ul>
-             <li>Description: <%= item.description %></li>
-             <li>Price: <%= item.price %></li>
-             <li>Quantity: <%= item.qty %></li>
-         <ul>
-            <form action="/products/<%=item._id%>?_method=PUT" method="POST">
-                <% if(item.qty != 0) { %>
-                <input class="hidden" type="hidden" name="qty" value="<%= (parseInt(item.qty)-1).toString() %>">
-                <input class ="buy" type="submit" value="Buy Now!"/>
-                <% } else { %>
-                    <p>Out of Stock!</p>
-                    <input class="off" type="submit" value="Buy Now!" disabled="true"/>
-               <% } %>
-            </form>
-            <a href="/products"><button>Back Home</button></a>
-     </p>
+    <nav>
+        <a href="/store">Back to Main Store</a>
+        <a href="/store/<%=store._id%>/edit">Edit Product</a>
+    </nav>
+    <h1><%=store.name %></h1>
+    <img id="pic" src="<%= store.img%>" alt="store.name"><br>
+    Description: <%= store.description%>
+    <br />
+    Price: <%= store.price %>
+    <br>
+    Quantity Remaining: <%= store.qty%>
+    <!-- BUY -->
+    <form action="/store/<%=store._id%>?_method=PUT" method="POST">
+    <% if(store.qty === 0) { %>
+        <p>OUT OF STOCK</p>
+        <input type="submit" value="Buy" disabled=true>
+        <% } else { %>    
+            <input type="hidden" name="qty" value="<%= (parseInt(store.qty)-1).toString() %>" >
+            <input id="buy" type="submit" value="Buy">
+    <% } %>
+</form>
+<!-- DELETE -->
+<form action="/store/<%=store._id%>?_method=DELETE" method="POST">
+    <input type="submit" value="Delete Product">
+</form>
     
+<% /* %> 
+<% let qty = store.qty %>
+<% let buy = document.getElementById("buy")%>
+<% %> 
+<% */ %>
 </body>
 </html>

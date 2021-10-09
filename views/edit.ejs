@@ -12,20 +12,19 @@
 </head>
 <body>
 
-    <h1>Mongoose Store</h1>
-
-    <h2><%= item.name %></h2>
-
-    <img src=<%= item.img %>>
-
-    <form action="/products/<%=item._id%>?_method=PUT" method="POST">
-        Name: <input type="text" name="name" value="<%=item.name%>"><br>
-        Description: <input type="text" name="description" value="<%=item.description%>"><br>
-        Price: <input type="number" name="price" value="<%=item.price%>"><br>
-        Quantity: <input type="number" name="qty" value="<%=item.qty%>"><br>
-        <input type="submit" value="Submit Changes"/>
-        </form>
-        <a href="/products"><button>Back Home</button></a>
-    
+    <nav>
+        <a href="/store">Back to Main Store</a>
+    </nav>
+<form action="/store/<%=store._id%>?_method=PUT" method="POST">
+    Name: <input type="text" name="name" value="<%=store.name%>">
+    <input type="image url" name="img" value="<%=store.img%>">
+    Description: <input type="text" name="description" value="<%= store.description%>">
+    <br />
+    Price: <input type="number" name="price" value="<%= store.price %>">
+    <br>
+    Quantity Remaining: <input type="number" name="qty" value="<%= store.qty%>">
+    <br>
+    <input type="submit" value="Add product">
+</form>
 </body>
 </html>
